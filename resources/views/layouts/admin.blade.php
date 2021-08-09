@@ -12,6 +12,7 @@
   @stack('prepend-style')
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="/style/main.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.css"/>
   @stack('addon-style')
 </head>
 
@@ -26,13 +27,13 @@
           <img src="/images/admin.png" class="my-4" style="max-width: 150px" alt="" srcset="">
         </div>
         <div class="list-group list-group-flush">
-          <a href="/dashboard.html" class="list-group-item list-group-item-action">
+          <a href="{{ route('admin-dashboard') }}" class="list-group-item list-group-item-action">
             Dashboard
           </a>
-          <a href="/dashboard-products.html" class="list-group-item list-group-item-action">
+          <a href="" class="list-group-item list-group-item-action">
             Products
           </a>
-          <a href="/dashboard-transactions.html" class="list-group-item list-group-item-action">
+          <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : '' }}">
             Categories
           </a>
           <a href="/dashboard-settings.html" class="list-group-item list-group-item-action">
@@ -99,8 +100,9 @@
 
   <!-- Bootstrap core JavaScript -->
   @stack('prepend-script')
-  <script src="/vendor/jquery/jquery.slim.min.js"></script>
+  <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
