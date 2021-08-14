@@ -75,9 +75,15 @@
         <div class="row">
           @forelse ($products as $product)
               <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $incrementCategory += 100 }}">
-            <a href="/details.html" class="components-product d-block">
+            <a href="{{ route('detail' , $product->slug) }}" class="components-product d-block">
               <div class="product-thumbnail">
-                <div class="product-image" style="background-image: url('{{ Storage::url($product->photo) }}');">
+                <div class="product-image" style="
+                  @if($product->galleries)
+                    background-image: url('{{ Storage::url($product->galleries->first()->photos) }}')
+                  @else
+                    background-color: #eee
+                  @endif
+                ">
                 </div>
               </div>
               <div class="products-text">
@@ -90,7 +96,7 @@
           </div>
           @empty
               <div class="col-12 text-center py-4" data-aos="fade-up" data-aos-delay="100">
-                No Categories Found
+                No Products Found
               </div>
           @endforelse
         </div>
