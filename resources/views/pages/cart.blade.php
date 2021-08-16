@@ -86,18 +86,20 @@ Store Cart Page
           </h2>
         </div>
       </div>
-      <form action="" id="locations">
+      <form action="{{ route('checkout') }}" id="locations" enctype="multipart/form-data" method="POST">
+        @csrf
+        <input type="hidden" name="total_price" value="{{ $total_price }}">
         <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
           <div class="col-md-6">
             <div class="form-group">
               <label for="address_one">Address 1</label>
-              <input type="text" class="form-control" id="address_one" name="address_one" value="Setra Duta Cemara">
+              <input type="text" class="form-control" id="address_one" name="addressOne" value="Setra Duta Cemara">
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="address_two">Address 2</label>
-              <input type="text" class="form-control" id="address_two" name="address_two" value="Blok B2 No. 34">
+              <input type="text" class="form-control" id="address_two" name="addressTwo" value="Blok B2 No. 34">
             </div>
           </div>
           <div class="col-md-4">
@@ -178,7 +180,7 @@ Store Cart Page
             </div>
           </div>
           <div class="col-8 col-md-3">
-            <a href="/success.html" class="btn btn-success mt-4 px-4 btn-block">Checkout Now</a>
+            <button type="submit" class="btn btn-success mt-4 px-4 btn-block">Checkout Now</button>
           </div>
         </div>
       </form>
